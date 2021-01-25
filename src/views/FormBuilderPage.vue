@@ -29,18 +29,18 @@
 
         <!--FORM BUILDER SIDEBAR-->
 
-<!--        <v-navigation-drawer class="form-builder__sidebar sidebar"-->
-<!--                             app-->
-<!--                             right>-->
-<!--          <FormElements class="sidebar__elements"/>-->
-<!--        </v-navigation-drawer>-->
+        <v-navigation-drawer class="form-builder__sidebar sidebar"
+                             app
+                             right>
+          <FormElements class="sidebar__elements"/>
+        </v-navigation-drawer>
 
         <!--FORM BUILDER MAIN AREA-->
 
-<!--        <section class="form-builder__main-area">-->
-<!--          <FormArea/>-->
-<!--          <FormEditModal/>-->
-<!--        </section>-->
+        <section class="form-builder__main-area">
+          <FormArea/>
+          <FormEditModal/>
+        </section>
       </v-container>
     </v-main>
   </v-app>
@@ -50,16 +50,16 @@
 <script>
 
   import { mapMutations, mapGetters } from "vuex";
-  // import FormElements from "@/components/FormElements";
-  // import FormArea from "@/components/FormArea";
-  // import FormEditModal from "@/components/modals/FormEditModal";
+  import FormElements from "@/components/FormElements";
+  import FormArea from "@/components/FormArea";
+  import FormEditModal from "@/components/modals/FormEditModal";
 
   export default {
     name: "FormBuilderPage",
     components: {
-      // FormEditModal,
-      // FormArea,
-      // FormElements
+      FormEditModal,
+      FormArea,
+      FormElements
     },
     data() {
       return {
