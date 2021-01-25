@@ -80,10 +80,10 @@ export const ElementRadioBox = ({title, icon}) => {
 	}
 };
 
-export const ElementDatePicker = ({title, icon}) => {
+export const ElementDateTimePicker = ({title, icon}) => {
 	return {
 		...ElementEntity(title, icon),
-		type: "DatePicker",
+		type: "DateTimePicker",
 		value: ""
 	}
 };
@@ -103,6 +103,6 @@ export const DefaultElementsListChose = [
 	ElementNumberField({title: "Number field", icon: "mdi-numeric"}),
 	ElementSelectBox({title: "Select box", icon: "mdi-cursor-default-click-outline"}),
 	ElementRadioBox({title: "Radio box", icon: "mdi-radiobox-marked"}),
-	ElementDatePicker({title: "Date picker", icon: "mdi-calendar-range"}),
+	ElementDateTimePicker({title: "Date Time picker", icon: "mdi-alarm"}),
 	ElementAttachment({title: "Attachment", icon: "mdi-attachment"})
 ];
