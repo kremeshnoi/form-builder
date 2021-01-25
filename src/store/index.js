@@ -15,19 +15,6 @@ export default new Vuex.Store({
     isModalActive: false
   },
   plugins: [vuexLocal.plugin],
-  mutations: {
-    SET_MODAL_STATE(state, modalState) {
-      state.isModalActive = modalState;
-    }
-  },
-  actions: {
-    toggleModalState({commit}) {
-      commit("SET_MODAL_STATE", !this.state.isModalActive);
-    }
-  },
-  getters: {
-    getModalState: state => state.isModalActive
-  },
   modules: {
     formsModule,
     elementsModule
