@@ -103,7 +103,7 @@
       </v-container>
     </v-main>
 
-<!--    <DemoModal :currentForm="getCurrentForm"/>-->
+    <DemoModal :currentForm="getCurrentForm"/>
   </v-app>
 
 </template>
@@ -112,12 +112,12 @@
 
   import draggable from "vuedraggable";
   import { mapActions, mapGetters, mapMutations } from "vuex";
-  // import DemoModal from "@/components/modals/DemoModal";
+  import DemoModal from "@/components/modals/DemoModal";
 
   export default {
     name: "DashboardPage",
     components: {
-      // DemoModal,
+      DemoModal,
       draggable
     },
     data() {
