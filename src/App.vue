@@ -1,6 +1,6 @@
 <template>
 
-	<v-app>
+	<v-app class="app">
 		<router-view/>
 	</v-app>
 
@@ -13,3 +13,10 @@ export default {
 };
 
 </script>
+
+<style lang="sass">
+
+	.v-application--wrap
+		min-height: 100% !important
+
+</style>

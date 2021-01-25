@@ -162,7 +162,7 @@
   // DASHBOARD
 
   .dashboard
-    padding: 40px 40px 40px
+    padding: 40px 40px 40px 40px
 
   // CREATE PANEL
 
