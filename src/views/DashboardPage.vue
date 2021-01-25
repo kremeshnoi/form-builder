@@ -11,7 +11,7 @@
 
         <!--CREATE PANEL-->
 
-        <section class="dashboard__create-panel create-panel">
+        <v-form @submit.prevent="onAdd()" class="dashboard__create-panel create-panel">
           <v-text-field class="create-panel__input"
                         v-model="title"
                         label="Form Title"
@@ -22,11 +22,11 @@
           <v-btn class="create-panel__button"
                  color="primary"
                  :disabled="title.length === 0"
-                 @click="onAdd()"
+                 type="submit"
                  large
                  depressed> Create
           </v-btn>
-        </section>
+        </v-form>
 
         <!--DASHBOARD LIST-->
 
@@ -49,11 +49,7 @@
 
               <!--DRAGGABLE AREA-->
 
-              <draggable class="dashboard-list__draggable-area draggable-area"
-                         :group="{ name: 'form-elements',pull: 'clone', put: false }"
-                         @start="drag=true"
-                         @end="drag=false">
-
+              <section class="dashboard-list__draggable-area draggable-area">
                 <v-list-item class="draggable-area__item"
                              v-for="(item, itemIndex) in forms"
                              :key="itemIndex">
@@ -88,22 +84,23 @@
                       </v-icon> Delete
                     </v-btn>
 
-                    <v-btn class="action-buttons__item" v-if="item.elements.length"
-                           @click="onShowDemo(item.uid)"
+                    <v-btn class="action-buttons__item"
+                           v-if="item.elements.length"
+                           @click="onShowDemo(itemIndex)"
                            text>
                       <v-icon class="action-buttons__item-icon"> mdi-eye
                       </v-icon> Demo
                     </v-btn>
                   </span>
                 </v-list-item>
-              </draggable>
+              </section>
             </v-list>
           </v-card>
         </section>
       </v-container>
     </v-main>
 
-    <DemoModal :currentForm="getCurrentForm"/>
+    <DemoModal/>
   </v-app>
 
 </template>
@@ -111,7 +108,7 @@
 <script>
 
   import draggable from "vuedraggable";
-  import { mapActions, mapGetters, mapMutations } from "vuex";
+  import { mapGetters, mapMutations } from "vuex";
   import DemoModal from "@/components/modals/DemoModal";
 
   export default {
@@ -135,22 +132,17 @@
       ...mapMutations({
         createForm: "CREATE_FORM",
         deleteForm: "DELETE_FORM",
-        setCurrentForm: "SET_CURRENT_FORM"
-      }),
-      ...mapActions({
-        toggleModalState: "toggleModalState"
+        setCurrentForm: "SET_DEMO_FORM"
       }),
       onAdd() {
-        if (!this.title.trim().length) return;
         this.createForm(this.title);
         this.title = "";
       },
       onDelete(uid) {
         this.deleteForm(uid);
       },
-      onShowDemo(uid) {
-        this.setCurrentForm(uid);
-        this.toggleModalState();
+      onShowDemo(index) {
+        this.setCurrentForm(index);
       }
     }
   }
