@@ -21,7 +21,8 @@
              v-ripple="false">
 
         <v-icon class="draggable-area__item-icon"> {{ item.icon }}
-        </v-icon> {{ item.title }}
+        </v-icon>
+        {{ item.title }}
       </v-btn>
     </draggable>
   </section>
@@ -29,41 +30,41 @@
 
 <script>
 
-  import draggable from "vuedraggable";
-  import { mapGetters, mapMutations } from "vuex";
+import draggable from "vuedraggable";
+import {mapGetters, mapMutations} from "vuex";
 
-  export default {
-    name: "FormElements",
-    components: {
-      draggable
-    },
-    computed: {
-      ...mapGetters(["getElements"])
-    },
-    methods: {
-      ...mapMutations({
-       addElementToForm: "ADD_ELEMENT_TO_FORM"
-      })
-    }
+export default {
+  name: "FormElements",
+  components: {
+    draggable
+  },
+  computed: {
+    ...mapGetters(["getElements"])
+  },
+  methods: {
+    ...mapMutations({
+      addElementToForm: "ADD_ELEMENT_TO_FORM"
+    })
   }
+}
 
 </script>
 
 <style lang="sass" scoped>
 
-  // FORM ELEMENTS
+// FORM ELEMENTS
 
-  .form-elements
-    &__title
-      margin: 0 0 20px 0
+.form-elements
+  &__title
+    margin: 0 0 20px 0
 
-  // DRAGGABLE AREA
+// DRAGGABLE AREA
 
-  .draggable-area
-    &__item
-      margin: 0 0 14px 0
+.draggable-area
+  &__item
+    margin: 0 0 14px 0
 
-    &__item-icon
-      margin: 0 10px 0 0
+  &__item-icon
+    margin: 0 10px 0 0
 
 </style>
