@@ -11,8 +11,6 @@
     <!--DRAGGABLE AREA-->
 
     <draggable class="form-area__draggable-area draggable-area"
-               :list="list"
-               :sort="false"
                :group="{ name: 'form-area-elements', put: true }"
                :class="{ active: getCurrentForm.elements.length }"
                @add="onAdd"
@@ -79,11 +77,6 @@
 
   export default {
     name: "FormArea",
-    data() {
-      return {
-        list: []
-      }
-    },
     components: {
       draggable
     },
