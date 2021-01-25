@@ -22,6 +22,7 @@ export const formsModule = {
 			state.forms.find(f => f.uid === state.currentForm.uid).elements.push(newFormElement);
 		},
 		DELETE_ELEMENT_FROM_FORM(state, element) {
+			console.log(element, state);
 			state.forms.find(f => f.uid === element.formId).elements = state.forms.find(f => f.uid === element.formId).elements.filter(el => el.uid !== element.uid);
 			if (element.uid === state.currentElement.uid) {
 				state.currentElement = {};

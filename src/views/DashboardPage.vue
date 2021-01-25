@@ -88,7 +88,7 @@
                       </v-icon> Delete
                     </v-btn>
 
-                    <v-btn class="action-buttons__item"
+                    <v-btn class="action-buttons__item" v-if="item.elements.length"
                            @click="onShowDemo(item.uid)"
                            text>
                       <v-icon class="action-buttons__item-icon"> mdi-eye

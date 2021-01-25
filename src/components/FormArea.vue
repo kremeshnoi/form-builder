@@ -15,7 +15,7 @@
                :class="{ active: getCurrentForm.elements.length }"
                @add="onAdd"
                @start="drag=true"
-               @end="drag=false">
+               @end="onDragEnd">
       <v-subheader class="draggable-area__subheader"
                    v-if="getCurrentForm.elements.length === 0"> Drag here
       </v-subheader>
@@ -108,7 +108,10 @@
       },
       onAdd(event) {
         this.addElementToForm(this.getElements[event.oldIndex]);
-      }
+      },
+	    onDragEnd({newIndex, oldIndex}) {
+
+	    }
     }
   }
 
