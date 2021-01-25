@@ -14,14 +14,13 @@
                :group="{ name: 'form-area-elements', put: true }"
                :class="{ active: getCurrentForm.elements.length }"
                @add="onAdd"
-               @start="drag=true"
                @end="onDragEnd">
       <v-subheader class="draggable-area__subheader"
-                   v-if="getCurrentForm.elements.length === 0"> Drag here
+                   v-if="!getCurrentForm.elements.length"> Drag here
       </v-subheader>
       <v-list-item class="draggable-area__item"
-                   v-for="(item, itemIndex) in getCurrentForm.elements"
-                   :key="itemIndex">
+                   v-for="item in getCurrentForm.elements"
+                   :key="item.uid">
 
         <v-list-item-avatar class="draggable-area__item-avatar">
           <v-icon class="draggable-area__item-icon grey lighten-1"
@@ -31,7 +30,7 @@
 
         <v-list-item-content class="draggable-area__item-content">
           <div class="draggable-area__item-info">
-            <p class="draggable-area__item-description"> Type: {{ item.title }}
+            <p class="draggable-area__item-description"> Type: {{ item.type }}
             </p>
             <p class="draggable-area__item-description"> Label: {{ item.label }}
             </p>
@@ -73,7 +72,7 @@
 <script>
 
   import draggable from "vuedraggable";
-  import { mapGetters, mapMutations, mapActions } from "vuex";
+  import { mapGetters, mapMutations } from "vuex";
 
   export default {
     name: "FormArea",
@@ -91,26 +90,30 @@
       ...mapMutations({
         deleteElementFromForm: "DELETE_ELEMENT_FROM_FORM",
         setCurrentElement: "SET_CURRENT_ELEMENT",
-        addElementToForm: "ADD_ELEMENT_TO_FORM"
-      }),
-      ...mapActions({
-        toggleModalState: "toggleModalState"
+        addElementToForm: "ADD_ELEMENT_TO_FORM",
+        saveCurrentForm: "SAVE_CURRENT_FORM",
+        reorder: "REORDER_ELEMENTS"
       }),
       onSave() {
+        this.saveCurrentForm();
         this.$router.push("/");
       },
       onDelete(element) {
         this.deleteElementFromForm(element);
       },
       onEdit(element) {
-        this.toggleModalState();
         this.setCurrentElement(element);
       },
       onAdd(event) {
-        this.addElementToForm(this.getElements[event.oldIndex]);
+        const type = this.getElements[event.oldIndex].type;
+        this.setCurrentElement({
+          type,
+          items: ['RadioBox', 'SelectBox'].includes(type) ? [] : undefined,
+          index: event.newIndex 
+        });
       },
-	    onDragEnd({newIndex, oldIndex}) {
-
+	    onDragEnd({ newIndex, oldIndex }) {
+          this.reorder({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]});
 	    }
     }
   }
