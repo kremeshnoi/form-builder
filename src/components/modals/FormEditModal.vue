@@ -3,7 +3,7 @@
 	<!--FORM EDIT-->
 
   <v-dialog class="form-edit"
-            v-model="computeModalState"
+            v-model="isVisible"
             persistent
             max-width="600px">
 
@@ -26,33 +26,28 @@
 
 			<!--EDIT CONTENT-->
 
-      <div class="form-edit__content edit-content"
-           v-if="getCurrentElement">
+      <div class="form-edit__content edit-content">
 
         <div class="edit-content__info">
-          <p class="edit-content__info-description"> Item Type: {{ getCurrentElement.title }}
-          </p>
-          <p class="edit-content__info-description"> Item ID: {{ getCurrentElement.uid }}
+          <p class="edit-content__info-description">Type: {{ item.type }}
           </p>
         </div>
 
         <v-text-field class="edit-content__field"
-                      v-if="getCurrentElement"
-                      v-model="label"
+                      v-model="item.label"
                       filled
                       placeholder="Edit label">
         </v-text-field>
 
         <v-text-field class="edit-content__field"
-                      v-if="getCurrentElement"
-                      v-model="name"
+                      v-model="item.name"
                       filled
                       placeholder="Set name">
         </v-text-field>
 
         <v-combobox class="edit-content__chips"
-                    v-if="getCurrentElement.type === 'RadioBox' || getCurrentElement.type === 'SelectBox'"
-                    v-model="chips"
+                    v-if="item.type === 'RadioBox' || item.type === 'SelectBox'"
+                    v-model="item.items"
                     solo
                     chips
                     multiple
@@ -66,8 +61,7 @@
                     v-bind="attrs"
                     :input-value="selected"
                     close
-                    @click="select"
-                    @click:close="remove(item)">
+                    @click="select">
 
               <strong> {{ item }}
               </strong>&nbsp;
@@ -75,8 +69,11 @@
           </template>
         </v-combobox>
 
-        <v-btn class="edit-content__save-button"
-               @click="save()"> Save
+        <v-btn 
+            class="edit-content__save-button" 
+            :disabled="!isValid"
+            @click="save()"
+        > Save
         </v-btn>
       </div>
     </v-card>
@@ -86,68 +83,47 @@
 
 <script>
 
-  import { mapGetters, mapMutations, mapActions } from "vuex";
+  import { mapMutations, mapState } from "vuex";
   import TextField from "@/components/fields/TextField";
 
   export default {
     name: "FormEdit",
     data() {
       return {
-        label: "",
-        name: "",
-        chips: []
+        item: {},
+        isVisible: false
       }
     },
     components: {
       TextField
     },
     computed: {
-      ...mapGetters({
-        getCurrentElement: "getCurrentElement",
-        getModalState: "getModalState"
+      ...mapState({
+        currentElement: (state) => state.formsModule.currentElement
       }),
-      computeModalState() {
-        return this.getModalState;
+      isValid(){
+        return this.item.label && this.item.name && (!['RadioBox', 'SelectBox'].includes(this.item.type) || this.item.items.length);
+      }
+    },
+    watch: {
+      currentElement(value){
+        this.item = (value || {});
+        this.isVisible = !!value;
       }
     },
     methods: {
       ...mapMutations({
-        updateCurrentElement: "UPDATE_FORM_ELEMENT"
-      }),
-      ...mapActions({
-        toggleModalState: "toggleModalState"
+        setCurrentElement: "SET_CURRENT_ELEMENT",
+        updateElement: "UPDATE_FORM_ELEMENT",
       }),
       cancel() {
-        this.label = "";
-        this.name = "";
-        this.chips = [];
-        this.toggleModalState();
+        this.setCurrentElement(null);
       },
       save() {
-        this.updateCurrentElement({
-          ...this.getCurrentElement,
-          label: this.label,
-          name: this.name,
-          items: this.chips
-        });
-        this.updateLabel();
-        this.toggleModalState();
-
-        this.label = "";
-        this.name = "";
-        this.chips = [];
-      },
-      updateLabel() {
-        this.label = this.getCurrentElement.label;
-      },
-      remove(item) {
-        this.chips.splice(this.chips.indexOf(item), 1);
-        this.chips = [...this.chips];
-      },
+        this.setCurrentElement(null);
+        this.updateElement({...this.item});
+      }
     },
-    mounted() {
-      this.updateLabel();
-    }
   }
 
 </script>

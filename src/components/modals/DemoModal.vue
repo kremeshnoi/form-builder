@@ -3,13 +3,11 @@
 	<!--DEMO MODAL-->
 
   <v-dialog class="demo-modal"
-            v-if="currentForm"
-            v-model="computeDemoModalState"
+            v-model="isVisible"
             persistent
             max-width="800">
 
-    <v-card class="demo-modal__card"
-            v-if="previewData.length === 0">
+    <v-card class="demo-modal__card" v-if="!showResult">
       <v-toolbar class="demo-modal__header"
                  dark
                  color="primary">
@@ -36,6 +34,7 @@
                       v-for="(item, itemIndex) in currentForm.elements"
                       :key="itemIndex">
             <component class="form-content__element"
+                       v-model="item.value"
                        :element="item"
                        v-bind:is="item.type">
 
@@ -50,13 +49,13 @@
     </v-card>
 
     <v-card class="demo-modal__preview preview"
-            v-if="previewData.length > 0">
+            v-if="showResult">
 
       <h2 class="preview__title"> {{ currentForm.title }}
       </h2>
 
       <section class="preview__content">
-        <div v-for="(item, itemIndex) in previewData[0].elements"
+        <div v-for="(item, itemIndex) in currentForm.elements"
              :key="itemIndex">
           <p class="preview__item"> {{ item.label }} : {{ item.value }} </p>
         </div>
@@ -73,7 +72,6 @@
 
 <script>
 
-  import { mapActions, mapGetters } from "vuex";
   import TextField from "@/components/fields/TextField";
   import ShortTextField from "@/components/fields/ShortTextField";
   import LongTextField from "@/components/fields/LongTextField";
@@ -82,10 +80,10 @@
   import RadioBox from "@/components/fields/RadioBox";
   import DatePicker from "@/components/fields/DatePicker";
   import Attachment from "@/components/fields/Attachment";
+  import {mapMutations, mapState} from "vuex";
 
   export default {
     name: "DemoModal",
-    props: ["currentForm"],
     components: {
       TextField,
       ShortTextField,
@@ -98,30 +96,34 @@
     },
     data() {
       return {
-        previewData: []
+        showResult: false,
+        isVisible: false,
+        currentForm: {}
       }
     },
     computed: {
-      ...mapGetters({
-        getModalState: "getModalState"
+      ...mapState({
+        form: (state) => state.formsModule.demoForm
       }),
-      computeDemoModalState() {
-        return this.getModalState;
+      ...mapMutations({
+        clear: "CLEAR_DEMO_FORM"
+      })
+    },
+    watch: {
+      form(value){
+        this.currentForm = (value || {});
+        this.isVisible = !!value;
       }
     },
     methods: {
-      ...mapActions({
-        toggleModalState: "toggleModalState"
-      }),
       cancel() {
-        this.label = "Default label";
-        this.toggleModalState();
+        this.clear;
       },
       submit() {
-        this.previewData.push(this.currentForm);
+        this.showResult = true;
       },
       back() {
-        this.previewData = [];
+        this.showResult = false;
       }
     }
   }
