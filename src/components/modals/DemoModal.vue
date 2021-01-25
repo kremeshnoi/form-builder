@@ -78,7 +78,7 @@
   import NumberField from "@/components/fields/NumberField";
   import SelectBox from "@/components/fields/SelectBox";
   import RadioBox from "@/components/fields/RadioBox";
-  import DatePicker from "@/components/fields/DatePicker";
+  import DateTimePicker from "@/components/fields/DateTimePicker";
   import Attachment from "@/components/fields/Attachment";
   import {mapMutations, mapState} from "vuex";
 
@@ -91,7 +91,7 @@
       NumberField,
       SelectBox,
       RadioBox,
-      DatePicker,
+	    DateTimePicker,
       Attachment
     },
     data() {
