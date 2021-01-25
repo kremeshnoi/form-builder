@@ -11,9 +11,9 @@
 
       <v-radio class="radio-box__item"
                v-for="(item, itemIndex) in element.items"
+               :value="value"
                :name="element.name"
                :label="item"
-               :value="item"
                :key="itemIndex"
                @change="handler(item)">
       </v-radio>
@@ -35,13 +35,13 @@
 
   export default {
     name: "RadioBox",
-    props: ["element"],
+	  props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT"
       }),
       handler(value) {
-        this.updateFormElement({ ...this.element, value });
+	      this.$emit("input", value);
       }
     }
   }

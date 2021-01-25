@@ -5,9 +5,9 @@
   <div class="select-box"
        v-if="element && element.items">
     <v-select class="select-box__select"
+              :value="value"
               :name="element.name"
               :label="element.label"
-              :value="element.value"
               :items="element.items"
               ma-0
               outlined
@@ -25,13 +25,13 @@
 
   export default {
     name: "SelectBox",
-    props: ["element"],
+	  props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT"
       }),
       handler(value) {
-        this.updateFormElement({ ...this.element, value });
+	      this.$emit("input", value);
       }
     }
   }

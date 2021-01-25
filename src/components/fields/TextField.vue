@@ -3,9 +3,9 @@
   <!--TEXT FIELD-->
 
   <v-text-field class="v-text-field"
+                :value="value"
                 :name="element.name"
                 :label="element.label"
-                :value="element.value"
                 ma-0
                 counter
                 outlined
@@ -17,17 +17,12 @@
 
 <script>
 
-  import { mapMutations } from "vuex";
-
   export default {
     name: "TextField",
-    props: ["element"],
+    props: ["value", "element"],
     methods: {
-      ...mapMutations({
-        updateFormElement: "UPDATE_FORM_ELEMENT",
-      }),
       handler(value) {
-        this.updateFormElement({ ...this.element, value });
+	      this.$emit("input", value);
       }
     }
   }

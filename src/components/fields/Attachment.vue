@@ -3,9 +3,10 @@
   <!--  ATTACHMENT-->
 
   <v-file-input class="attachment"
+                v-model="value"
+                :value="value"
                 :name="element.name"
                 :label="element.label"
-                :value="element.value"
                 outlined
                 show-size
                 hide-details
@@ -20,13 +21,13 @@
 
   export default {
     name: "Attachment",
-    props: ["element"],
+    props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT"
       }),
       handler(value) {
-        this.updateFormElement({ ...this.element, value });
+        this.$emit("input", value);
       }
     }
   }

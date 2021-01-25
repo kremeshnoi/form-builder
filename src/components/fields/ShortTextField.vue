@@ -3,9 +3,9 @@
   <!--  SHORT TEXT FIELD-->
 
   <v-text-field class="short-text-field"
+                :value="value"
                 :name="element.name"
                 :label="element.label"
-                :value="element.value"
                 ma-0
                 counter
                 outlined
@@ -22,13 +22,13 @@
 
   export default {
     name: "ShortTextField",
-    props: ["element"],
+	  props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT",
       }),
       handler(value) {
-        this.updateFormElement({ ...this.element, value });
+	      this.$emit("input", value);
       }
     }
   }

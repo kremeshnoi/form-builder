@@ -9,7 +9,7 @@
     </p>
     <v-date-picker class="date-picker"
                    v-model="picker"
-                   :value="element.value"
+                   :value="value"
                    elevation="4"
                    @change="handler(picker)">
     </v-date-picker>
@@ -23,7 +23,7 @@
 
   export default {
     name: "DatePicker",
-    props: ["element"],
+    props: ["value", "element"],
     data() {
       return {
         picker: new Date().toISOString().substr(0, 10),
@@ -34,7 +34,7 @@
         updateFormElement: "UPDATE_FORM_ELEMENT"
       }),
       handler(value) {
-        this.updateFormElement({ ...this.element, value });
+        this.$emit("input", value);
       }
     }
   }
