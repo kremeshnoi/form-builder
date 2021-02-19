@@ -5,12 +5,12 @@
     <p class="radio-box__label"> {{ element.label }} </p>
     <v-radio-group row hide-details>
       <v-radio
-        :label="item"
+        :key="value"
+        :label="value"
         :value="value"
-        :key="itemIndex"
         :name="element.name"
-        @change="handler(item)"
-        v-for="(item, itemIndex) in element.items">
+        @change="handler(value)"
+        v-for="(value) in element.items">
       </v-radio>
       <v-radio
         disabled
@@ -47,7 +47,7 @@
   // RADIO BOX
   .radio-box
     &__label
-      color: rgba(0, 0, 0, 0.6)
       font-size: 16px
+      color: rgba(0, 0, 0, 0.6)
 
 </style>
