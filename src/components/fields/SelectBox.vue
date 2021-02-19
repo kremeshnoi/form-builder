@@ -1,20 +1,17 @@
 <template>
 
   <!--SELECT BOX-->
-
-  <div class="select-box"
-       v-if="element && element.items">
-    <v-select class="select-box__select"
-              :value="value"
-              :name="element.name"
-              :label="element.label"
-              :items="element.items"
-              ma-0
-              outlined
-              hide-details
-              @change="handler">
+  <div v-if="element && element.items">
+    <v-select
+      ma-0
+      outlined
+      hide-details
+      :value="value"
+      @change="handler"
+      :name="element.name"
+      :label="element.label"
+      :items="element.items">
     </v-select>
-
   </div>
 
 </template>
@@ -25,13 +22,13 @@
 
   export default {
     name: "SelectBox",
-	  props: ["value", "element"],
+    props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT"
       }),
       handler(value) {
-	      this.$emit("input", value);
+        this.$emit("input", value);
       }
     }
   }

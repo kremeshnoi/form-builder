@@ -1,16 +1,15 @@
 <template>
 
   <!-- NUMBER FIELD-->
-
-  <v-text-field class="number-filed"
-                :value="value"
-                :name="element.name"
-                :label="element.label"
-                ma-0
-                outlined
-                hide-details
-                type="number"
-                @change="handler">
+  <v-text-field
+    ma-0
+    outlined
+    hide-details
+    type="number"
+    :value="value"
+    @change="handler"
+    :name="element.name"
+    :label="element.label">
   </v-text-field>
 
 </template>
@@ -21,13 +20,13 @@
 
   export default {
     name: "NumberField",
-	  props: ["value", "element"],
+    props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT",
       }),
       handler(value) {
-	      this.$emit("input", value);
+        this.$emit("input", value);
       }
     }
   }

@@ -1,16 +1,15 @@
 <template>
 
   <!--  ATTACHMENT-->
-
-  <v-file-input class="attachment"
-                v-model="value"
-                :value="value"
-                :name="element.name"
-                :label="element.label"
-                outlined
-                show-size
-                hide-details
-                @change="handler">
+  <v-file-input
+    outlined
+    show-size
+    hide-details
+    :value="value"
+    v-model="value"
+    @change="handler"
+    :name="element.name"
+    :label="element.label">
   </v-file-input>
 
 </template>

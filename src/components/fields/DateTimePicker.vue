@@ -1,17 +1,16 @@
 <template>
 
-	<v-datetime-picker :label="element.label"
-	                   v-model="datetime"
-	                   @input="handler">
-
+	<!--DATE-TIME PICKER)-->
+	<v-datetime-picker
+		:label="element.label"
+		v-model="datetime"
+		@input="handler">
 		<template slot="dateIcon">
 			<v-icon> mdi-calendar </v-icon>
 		</template>
-
 		<template slot="timeIcon">
 			<v-icon>mdi-alarm</v-icon>
 		</template>
-
 	</v-datetime-picker>
 
 </template>

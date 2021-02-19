@@ -1,17 +1,16 @@
 <template>
 
   <!--  SHORT TEXT FIELD-->
-
-  <v-text-field class="short-text-field"
-                :value="value"
-                :name="element.name"
-                :label="element.label"
-                ma-0
-                counter
-                outlined
-                maxlength="25"
-                @change="handler"
-  >
+  <v-text-field
+    ma-0
+    counter
+    outlined
+    :value="value"
+    maxlength="25"
+    @change="handler"
+    :name="element.name"
+    :label="element.label"
+    class="short-text-field">
   </v-text-field>
 
 </template>
@@ -22,13 +21,13 @@
 
   export default {
     name: "ShortTextField",
-	  props: ["value", "element"],
+    props: ["value", "element"],
     methods: {
       ...mapMutations({
         updateFormElement: "UPDATE_FORM_ELEMENT",
       }),
       handler(value) {
-	      this.$emit("input", value);
+        this.$emit("input", value);
       }
     }
   }
@@ -38,7 +37,6 @@
 <style lang="sass" scoped>
 
   // SHORT TEXT FIELD
-
   .short-text-field
     max-width: 400px
 

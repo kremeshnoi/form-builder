@@ -1,56 +1,53 @@
 <template>
 
   <!--FORM AREA-->
-
-  <v-card class="form-area"
-          v-if="getCurrentForm"
-          elevation="3">
-    <h2 class="form-area__title"> Edit: {{ getCurrentForm.title }}
-    </h2>
+  <v-card
+    elevation="3"
+    class="form-area"
+    v-if="getCurrentForm">
+    <h2> Edit: {{ getCurrentForm.title }} </h2>
 
     <!--DRAGGABLE AREA-->
-
-    <draggable class="form-area__draggable-area draggable-area"
-               :group="{ name: 'form-area-elements', put: true }"
-               :class="{ active: getCurrentForm.elements.length }"
-               @add="onAdd"
-               @end="onDragEnd">
-      <v-subheader class="draggable-area__subheader"
-                   v-if="!getCurrentForm.elements.length"> Drag here
+    <draggable
+      @add="onAdd"
+      @end="onDragEnd"
+      class="draggable-area"
+      :group="{ name: 'form-area-elements', put: true }"
+      :class="{ active: getCurrentForm.elements.length }">
+      <v-subheader
+        class="draggable-area__subheader"
+        v-if="!getCurrentForm.elements.length">
+        Drag here
       </v-subheader>
-      <v-list-item class="draggable-area__item"
-                   v-for="item in getCurrentForm.elements"
-                   :key="item.uid">
+      <v-list-item
+        :key="item.uid"
+        class="draggable-area__item"
+        v-for="item in getCurrentForm.elements">
 
-        <v-list-item-avatar class="draggable-area__item-avatar">
-          <v-icon class="draggable-area__item-icon grey lighten-1"
-                  dark> mdi-folder
-          </v-icon>
+        <v-list-item-avatar>
+          <v-icon class="grey lighten-1" dark> mdi-folder </v-icon>
         </v-list-item-avatar>
 
-        <v-list-item-content class="draggable-area__item-content">
+        <v-list-item-content>
           <div class="draggable-area__item-info">
-            <p class="draggable-area__item-description"> Type: {{ item.type }}
-            </p>
-            <p class="draggable-area__item-description"> Label: {{ item.label }}
-            </p>
+            <p class="draggable-area__item-description"> Type: {{ item.type }} </p>
+            <p class="draggable-area__item-description"> Label: {{ item.label }} </p>
           </div>
 
           <!--ACTION BUTTONS-->
-
-          <div class="draggable-area__action-buttons action-buttons">
-            <v-btn class="action-buttons__item"
-                   @click="onDelete(item)"
-                   text>
-              <v-icon class="action-buttons__item-icon"> mdi-delete
-              </v-icon> Delete
+          <div class="action-buttons">
+            <v-btn
+              text
+              @click="onDelete(item)">
+              <v-icon class="action-buttons__icon"> mdi-delete </v-icon>
+              Delete
             </v-btn>
 
-            <v-btn class="action-buttons__item"
-                   @click="onEdit(item)"
-                   text>
-              <v-icon class="action-buttons__item-icon"> mdi-pencil
-              </v-icon> Edit
+            <v-btn
+              text
+              @click="onEdit(item)">
+              <v-icon class="action-buttons__icon"> mdi-pencil </v-icon>
+              Edit
             </v-btn>
           </div>
         </v-list-item-content>
@@ -58,12 +55,10 @@
     </draggable>
 
     <!--FORM AREA SAVE BUTTON-->
-
-    <v-btn class="form-area__save-button"
-           @click="onSave()"
-           text>
-      <v-icon class="form-area__save-button-icon"> mdi-content-save
-      </v-icon> Save
+    <v-btn
+      text
+      @click="onSave()">
+      <v-icon class="form-area__save-button-icon"> mdi-content-save </v-icon> Save
     </v-btn>
   </v-card>
 
@@ -81,18 +76,18 @@
     },
     computed: {
       ...mapGetters({
+        getElements: "getElements",
         getCurrentForm: "getCurrentForm",
-        getCurrentElement: "getCurrentElement",
-        getElements: "getElements"
+        getCurrentElement: "getCurrentElement"
       })
     },
     methods: {
       ...mapMutations({
-        deleteElementFromForm: "DELETE_ELEMENT_FROM_FORM",
-        setCurrentElement: "SET_CURRENT_ELEMENT",
-        addElementToForm: "ADD_ELEMENT_TO_FORM",
+        reorder: "REORDER_ELEMENTS",
         saveCurrentForm: "SAVE_CURRENT_FORM",
-        reorder: "REORDER_ELEMENTS"
+        addElementToForm: "ADD_ELEMENT_TO_FORM",
+        setCurrentElement: "SET_CURRENT_ELEMENT",
+        deleteElementFromForm: "DELETE_ELEMENT_FROM_FORM"
       }),
       onSave() {
         this.saveCurrentForm();
@@ -108,13 +103,13 @@
         const type = this.getElements[event.oldIndex].type;
         this.setCurrentElement({
           type,
-          items: ['RadioBox', 'SelectBox'].includes(type) ? [] : undefined,
-          index: event.newIndex 
+          index: event.newIndex,
+          items: ['RadioBox', 'SelectBox'].includes(type) ? [] : undefined
         });
       },
-	    onDragEnd({ newIndex, oldIndex }) {
-          this.reorder({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]});
-	    }
+      onDragEnd({ newIndex, oldIndex }) {
+        this.reorder({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]});
+      }
     }
   }
 
@@ -123,62 +118,52 @@
 <style lang="sass" scoped>
 
   // FORM AREA
-
   .form-area
+    width: 100%
     padding: 40px
     display: flex
-    flex-direction: column
-    align-items: center
-    border-radius: 4px
     min-height: 90%
     max-width: 750px
-    width: 100%
-
+    border-radius: 4px
+    align-items: center
+    flex-direction: column
     &__save-button-icon
       margin: 0 10px 0 0
 
   // DRAGGABLE AREA
-
   .draggable-area
-    padding: 20px 20px 20px 20px
-    display: flex
-    justify-content: flex-start
-    align-items: center
-    flex-direction: column
-    height: 100%
-    width: 100%
     flex: 1
+    width: 100%
+    height: 100%
+    display: flex
     border-radius: 4px
-    border: 1px dotted rgba(0, 0, 0, 0.6)
+    align-items: center
+    margin: 40px 0 40px 0
+    flex-direction: column
     background-color: #ffd5eb
     color: rgba(0, 0, 0, 0.6)
-    margin: 40px 0 40px 0
-
+    justify-content: flex-start
+    padding: 20px 20px 20px 20px
+    border: 1px dotted rgba(0, 0, 0, 0.6)
+    &__item
+      width: 100%
     &.active
       background-color: #ffff
-
     &__subheader
       user-select: none
       pointer-events: none
-
-    &__item
-      width: 100%
-
     &__item-info
-      display: flex
       flex: 1
+      display: flex
       flex-direction: column
-
     &__item-description
       margin: 0 0 10px 0
 
   // ACTION BUTTONS
-
   .action-buttons
     flex: 1 !important
     margin: 20px 0 0 0
-
-    &__item-icon
+    &__icon
       margin: 0 10px 0 0
 
 </style>
