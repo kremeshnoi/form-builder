@@ -7,9 +7,9 @@ Web application to generate forms for different cases
 ## To run the project
 `npm i` - install packages 
 
-`npm run serve` - compiles and hot-reloads for development
-
 `npm run build` - compiles and minifies for production
+
+`npm run serve` - compiles and hot-reloads for development
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/)
