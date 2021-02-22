@@ -1,19 +1,15 @@
-# form-builder
+# Form Builder
+Web application to generate forms for different cases
 
-## Project setup
-```
-npm install
-```
+## Requirements
+* Node.js https://nodejs.org/en/download
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## To run the project
+`npm i` - install packages 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+`npm run serve` - compiles and hot-reloads for development
+
+`npm run build` - compiles and minifies for production
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/)
