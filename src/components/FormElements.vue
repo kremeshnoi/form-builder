@@ -26,8 +26,8 @@
 
 <script>
 
-  import draggable from "vuedraggable";
-  import { mapGetters, mapMutations } from "vuex";
+  import draggable from "vuedraggable"
+  import { mapGetters, mapMutations } from "vuex"
 
   export default {
     name: "FormElements",

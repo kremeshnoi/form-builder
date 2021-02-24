@@ -1,8 +1,8 @@
-const uid = () => Math.floor(Math.random() * 99999);
+const uid = () => Math.floor(Math.random() * 99999)
 
 const Entity = () => ({
 	uid: uid()
-});
+})
 
 export const FormEntity = (title) => {
 	return {
@@ -10,7 +10,7 @@ export const FormEntity = (title) => {
 		title,
 		elements: []
 	}
-};
+}
 
 export const FormElement = (formId, element) => {
 	return {
@@ -18,7 +18,7 @@ export const FormElement = (formId, element) => {
 		formId,
 		...Entity()
 	}
-};
+}
 
 export const ElementEntity = (title, icon) => {
 	return {
@@ -28,7 +28,7 @@ export const ElementEntity = (title, icon) => {
 		label: "",
 		name: ""
 	}
-};
+}
 
 export const ElementTextField = ({title, icon}) => {
 	return {
@@ -36,7 +36,7 @@ export const ElementTextField = ({title, icon}) => {
 		type: "TextField",
 		value: ""
 	}
-};
+}
 
 export const ElementShortTextField = ({title, icon}) => {
 	return {
@@ -44,7 +44,7 @@ export const ElementShortTextField = ({title, icon}) => {
 		type: "ShortTextField",
 		value: ""
 	}
-};
+}
 
 export const ElementLongTextField = ({title, icon}) => {
 	return {
@@ -52,7 +52,7 @@ export const ElementLongTextField = ({title, icon}) => {
 		type: "LongTextField",
 		value: ""
 	}
-};
+}
 
 export const ElementNumberField = ({title, icon}) => {
 	return {
@@ -60,7 +60,7 @@ export const ElementNumberField = ({title, icon}) => {
 		type: "NumberField",
 		value: ""
 	}
-};
+}
 
 export const ElementSelectBox = ({title, icon}) => {
 	return {
@@ -69,7 +69,7 @@ export const ElementSelectBox = ({title, icon}) => {
 		items: [],
 		value: ""
 	}
-};
+}
 
 export const ElementRadioBox = ({title, icon}) => {
 	return {
@@ -78,7 +78,7 @@ export const ElementRadioBox = ({title, icon}) => {
 		items: [],
 		value: ""
 	}
-};
+}
 
 export const ElementDateTimePicker = ({title, icon}) => {
 	return {
@@ -86,7 +86,7 @@ export const ElementDateTimePicker = ({title, icon}) => {
 		type: "DateTimePicker",
 		value: ""
 	}
-};
+}
 
 export const ElementAttachment = ({title, icon}) => {
 	return {
@@ -94,7 +94,7 @@ export const ElementAttachment = ({title, icon}) => {
 		type: "Attachment",
 		value: ""
 	}
-};
+}
 
 export const DefaultElementsListChose = [
 	ElementTextField({title: "Text field", icon: "mdi-card-text"}),
@@ -105,4 +105,4 @@ export const DefaultElementsListChose = [
 	ElementRadioBox({title: "Radio box", icon: "mdi-radiobox-marked"}),
 	ElementDateTimePicker({title: "Date Time picker", icon: "mdi-alarm"}),
 	ElementAttachment({title: "Attachment", icon: "mdi-attachment"})
-];
+]

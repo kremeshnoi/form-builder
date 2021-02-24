@@ -66,8 +66,8 @@
 
 <script>
 
-  import draggable from "vuedraggable";
-  import { mapGetters, mapMutations } from "vuex";
+  import draggable from "vuedraggable"
+  import { mapGetters, mapMutations } from "vuex"
 
   export default {
     name: "FormArea",
@@ -90,25 +90,25 @@
         deleteElementFromForm: "DELETE_ELEMENT_FROM_FORM"
       }),
       onSave() {
-        this.saveCurrentForm();
-        this.$router.push("/");
+        this.saveCurrentForm()
+        this.$router.push("/")
       },
       onDelete(element) {
-        this.deleteElementFromForm(element);
+        this.deleteElementFromForm(element)
       },
       onEdit(element) {
-        this.setCurrentElement(element);
+        this.setCurrentElement(element)
       },
       onAdd(event) {
-        const type = this.getElements[event.oldIndex].type;
+        const type = this.getElements[event.oldIndex].type
         this.setCurrentElement({
           type,
           index: event.newIndex,
           items: ['RadioBox', 'SelectBox'].includes(type) ? [] : undefined
-        });
+        })
       },
       onDragEnd({ newIndex, oldIndex }) {
-        this.reorder({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]});
+        this.reorder({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]})
       }
     }
   }

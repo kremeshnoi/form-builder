@@ -1,4 +1,4 @@
-import { DefaultElementsListChose } from "@/store/forms/models";
+import { DefaultElementsListChose } from "@/store/forms/models"
 
 export const elementsModule = {
 	state: {
@@ -8,4 +8,4 @@ export const elementsModule = {
 	getters: {
 		getElements: (state) => state.elements
 	}
-};
+}

@@ -88,9 +88,9 @@
 
 <script>
 
-  import draggable from "vuedraggable";
-  import { mapGetters, mapMutations } from "vuex";
-  import DemoModal from "@/components/modals/DemoModal";
+  import draggable from "vuedraggable"
+  import { mapGetters, mapMutations } from "vuex"
+  import DemoModal from "@/components/modals/DemoModal"
 
   export default {
     name: "DashboardPage",
@@ -116,14 +116,14 @@
         setCurrentForm: "SET_DEMO_FORM"
       }),
       onAdd() {
-        this.createForm(this.title);
-        this.title = "";
+        this.createForm(this.title)
+        this.title = ""
       },
       onDelete(uid) {
-        this.deleteForm(uid);
+        this.deleteForm(uid)
       },
       onShowDemo(index) {
-        this.setCurrentForm(index);
+        this.setCurrentForm(index)
       }
     }
   }

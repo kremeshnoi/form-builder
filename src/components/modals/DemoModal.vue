@@ -59,15 +59,15 @@
 
 <script>
 
-  import { mapMutations, mapState } from "vuex";
-  import RadioBox from "@/components/fields/RadioBox";
-  import TextField from "@/components/fields/TextField";
-  import SelectBox from "@/components/fields/SelectBox";
-  import Attachment from "@/components/fields/Attachment";
-  import NumberField from "@/components/fields/NumberField";
-  import LongTextField from "@/components/fields/LongTextField";
-  import ShortTextField from "@/components/fields/ShortTextField";
-  import DateTimePicker from "@/components/fields/DateTimePicker";
+  import { mapMutations, mapState } from "vuex"
+  import RadioBox from "@/components/fields/RadioBox"
+  import TextField from "@/components/fields/TextField"
+  import SelectBox from "@/components/fields/SelectBox"
+  import Attachment from "@/components/fields/Attachment"
+  import NumberField from "@/components/fields/NumberField"
+  import LongTextField from "@/components/fields/LongTextField"
+  import ShortTextField from "@/components/fields/ShortTextField"
+  import DateTimePicker from "@/components/fields/DateTimePicker"
 
   export default {
     name: "DemoModal",
@@ -98,19 +98,19 @@
     },
     watch: {
       form(value){
-        this.isVisible = !!value;
-        this.currentForm = (value || {});
+        this.isVisible = !!value
+        this.currentForm = (value || {})
       }
     },
     methods: {
       cancel() {
-        this.clear;
+        this.clear
       },
       submit() {
-        this.showResult = true;
+        this.showResult = true
       },
       back() {
-        this.showResult = false;
+        this.showResult = false
       }
     }
   }

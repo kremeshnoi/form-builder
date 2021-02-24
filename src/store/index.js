@@ -1,14 +1,14 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import VuexPersistence from 'vuex-persist';
-import { formsModule } from "@/store/forms";
-import { elementsModule } from "@/store/forms/elements";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
+import { formsModule } from "@/store/forms"
+import { elementsModule } from "@/store/forms/elements"
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage
-});
+})
 
 export default new Vuex.Store({
   state: {
@@ -19,4 +19,4 @@ export default new Vuex.Store({
     formsModule,
     elementsModule
   }
-});
+})

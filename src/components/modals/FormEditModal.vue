@@ -42,7 +42,7 @@
               :input-value="selected"
               close-icon="edit-content__chips-item">
               <strong> {{ item }} </strong>
-              &nbsp;
+              &nbsp
             </v-chip>
           </template>
         </v-combobox>
@@ -56,8 +56,8 @@
 
 <script>
 
-  import { mapMutations, mapState } from "vuex";
-  import TextField from "@/components/fields/TextField";
+  import { mapMutations, mapState } from "vuex"
+  import TextField from "@/components/fields/TextField"
 
   export default {
     name: "FormEdit",
@@ -76,13 +76,13 @@
       }),
       isValid(){
         return this.item.label && this.item.name && (!['RadioBox', 'SelectBox']
-        .includes(this.item.type) || this.item.items.length);
+        .includes(this.item.type) || this.item.items.length)
       }
     },
     watch: {
       currentElement(value){
-        this.isVisible = !!value;
-        this.item = (value || {});
+        this.isVisible = !!value
+        this.item = (value || {})
       }
     },
     methods: {
@@ -91,11 +91,11 @@
         setCurrentElement: "SET_CURRENT_ELEMENT"
       }),
       cancel() {
-        this.setCurrentElement(null);
+        this.setCurrentElement(null)
       },
       save() {
-        this.setCurrentElement(null);
-        this.updateElement({...this.item});
+        this.setCurrentElement(null)
+        this.updateElement({...this.item})
       }
     },
   }

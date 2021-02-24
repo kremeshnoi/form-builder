@@ -25,7 +25,7 @@
 
 <script>
 
-  import { mapMutations } from "vuex";
+  import { mapMutations } from "vuex"
 
   export default {
     name: "RadioBox",
@@ -35,7 +35,7 @@
         updateFormElement: "UPDATE_FORM_ELEMENT"
       }),
       handler(value) {
-        this.$emit("input", value);
+        this.$emit("input", value)
       }
     }
   }

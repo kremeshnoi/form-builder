@@ -53,10 +53,10 @@
 
 <script>
 
-  import FormArea from "@/components/FormArea";
-  import { mapMutations, mapGetters } from "vuex";
-  import FormElements from "@/components/FormElements";
-  import FormEditModal from "@/components/modals/FormEditModal";
+  import FormArea from "@/components/FormArea"
+  import { mapMutations, mapGetters } from "vuex"
+  import FormElements from "@/components/FormElements"
+  import FormEditModal from "@/components/modals/FormEditModal"
 
   export default {
     name: "FormBuilderPage",
@@ -83,7 +83,7 @@
       })
     },
     created() {
-      this.setCurrentForm(this.$route.params.id);
+      this.setCurrentForm(this.$route.params.id)
     }
   }
 

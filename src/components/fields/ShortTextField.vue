@@ -17,7 +17,7 @@
 
 <script>
 
-  import { mapMutations } from "vuex";
+  import { mapMutations } from "vuex"
 
   export default {
     name: "ShortTextField",
@@ -27,7 +27,7 @@
         updateFormElement: "UPDATE_FORM_ELEMENT",
       }),
       handler(value) {
-        this.$emit("input", value);
+        this.$emit("input", value)
       }
     }
   }
