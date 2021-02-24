@@ -42,7 +42,7 @@
               :input-value="selected"
               close-icon="edit-content__chips-item">
               <strong> {{ item }} </strong>
-              &nbsp
+              &nbsp;
             </v-chip>
           </template>
         </v-combobox>
@@ -75,7 +75,7 @@
         currentElement: (state) => state.formsModule.currentElement
       }),
       isValid(){
-        return this.item.label && this.item.name && (!['RadioBox', 'SelectBox']
+        return this.item.label && this.item.name && (!["RadioBox", "SelectBox"]
         .includes(this.item.type) || this.item.items.length)
       }
     },

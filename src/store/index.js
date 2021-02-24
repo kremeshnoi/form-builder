@@ -1,6 +1,6 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import VuexPersistence from 'vuex-persist'
+import Vue from "vue"
+import Vuex from "vuex"
+import VuexPersistence from "vuex-persist"
 import { formsModule } from "@/store/forms"
 import { elementsModule } from "@/store/forms/elements"
 

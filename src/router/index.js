@@ -1,23 +1,23 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue"
+import VueRouter from "vue-router"
 import FormPage from "@/views/FormBuilderPage"
-import DashboardPage from '@/views/DashboardPage.vue'
+import DashboardPage from "@/views/DashboardPage.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: DashboardPage
   },
   {
-    path: '/forms/:id',
+    path: "/forms/:id",
     component: FormPage
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
 })

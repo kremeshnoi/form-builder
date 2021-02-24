@@ -104,7 +104,7 @@
         this.setCurrentElement({
           type,
           index: event.newIndex,
-          items: ['RadioBox', 'SelectBox'].includes(type) ? [] : undefined
+          items: ["RadioBox", "SelectBox"].includes(type) ? [] : undefined
         })
       },
       onDragEnd({ newIndex, oldIndex }) {
