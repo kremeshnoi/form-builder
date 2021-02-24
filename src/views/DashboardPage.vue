@@ -34,7 +34,7 @@
               </v-divider>
               <v-subheader
                 inset
-                v-if="forms.length === 0"> Nothing there...
+                v-if="getForms.length === 0"> Nothing there...
               </v-subheader>
 
               <!--DRAGGABLE AREA-->
@@ -42,7 +42,7 @@
                 <v-list-item
                   :key="itemIndex"
                   class="draggable-area__item"
-                  v-for="(item, itemIndex) in forms">
+                  v-for="(item, itemIndex) in getForms">
                   <v-list-item-avatar>
                     <v-icon class="grey lighten-1" dark> mdi-folder </v-icon>
                   </v-list-item-avatar>
@@ -105,15 +105,15 @@
     },
     computed: {
       ...mapGetters({
-        forms: "getForms",
-        getCurrentForm: "getCurrentForm"
+        getForms: "getForms",
+        getcurrent_form: "getcurrent_form"
       })
     },
     methods: {
       ...mapMutations({
         createForm: "CREATE_FORM",
         deleteForm: "DELETE_FORM",
-        setCurrentForm: "SET_DEMO_FORM"
+        setdemo_form: "SET_DEMO_FORM"
       }),
       onAdd() {
         this.createForm(this.title)
@@ -123,7 +123,7 @@
         this.deleteForm(uid)
       },
       onShowDemo(index) {
-        this.setCurrentForm(index)
+        this.setdemo_form(index)
       }
     }
   }

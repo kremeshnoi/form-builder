@@ -12,7 +12,7 @@ const vuexLocal = new VuexPersistence({
 
 export default new Vuex.Store({
   state: {
-    isModalActive: false
+    is_modal_active: false
   },
   plugins: [vuexLocal.plugin],
   modules: {

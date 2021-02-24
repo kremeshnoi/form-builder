@@ -4,8 +4,8 @@
   <v-card
     elevation="3"
     class="form-area"
-    v-if="getCurrentForm">
-    <h2> Edit: {{ getCurrentForm.title }} </h2>
+    v-if="getcurrent_form">
+    <h2> Edit: {{ getcurrent_form.title }} </h2>
 
     <!--DRAGGABLE AREA-->
     <draggable
@@ -13,16 +13,16 @@
       @end="onDragEnd"
       class="draggable-area"
       :group="{ name: 'form-area-elements', put: true }"
-      :class="{ active: getCurrentForm.elements.length }">
+      :class="{ active: getcurrent_form.elements.length }">
       <v-subheader
         class="draggable-area__subheader"
-        v-if="!getCurrentForm.elements.length">
+        v-if="!getcurrent_form.elements.length">
         Drag here
       </v-subheader>
       <v-list-item
         :key="item.uid"
         class="draggable-area__item"
-        v-for="item in getCurrentForm.elements">
+        v-for="item in getcurrent_form.elements">
 
         <v-list-item-avatar>
           <v-icon class="grey lighten-1" dark> mdi-folder </v-icon>
@@ -77,38 +77,38 @@
     computed: {
       ...mapGetters({
         getElements: "getElements",
-        getCurrentForm: "getCurrentForm",
-        getCurrentElement: "getCurrentElement"
+        getcurrent_form: "getcurrent_form",
+        getcurrent_element: "getcurrent_element"
       })
     },
     methods: {
       ...mapMutations({
-        reorder: "REORDER_ELEMENTS",
-        saveCurrentForm: "SAVE_CURRENT_FORM",
+        reorderElements: "REORDER_ELEMENTS",
+        savecurrent_form: "SAVE_CURRENT_FORM",
         addElementToForm: "ADD_ELEMENT_TO_FORM",
-        setCurrentElement: "SET_CURRENT_ELEMENT",
+        setcurrent_element: "SET_CURRENT_ELEMENT",
         deleteElementFromForm: "DELETE_ELEMENT_FROM_FORM"
       }),
       onSave() {
-        this.saveCurrentForm()
+        this.savecurrent_form()
         this.$router.push("/")
       },
       onDelete(element) {
         this.deleteElementFromForm(element)
       },
       onEdit(element) {
-        this.setCurrentElement(element)
+        this.setcurrent_element(element)
       },
       onAdd(event) {
         const type = this.getElements[event.oldIndex].type
-        this.setCurrentElement({
+        this.setcurrent_element({
           type,
           index: event.newIndex,
           items: ["RadioBox", "SelectBox"].includes(type) ? [] : undefined
         })
       },
       onDragEnd({ newIndex, oldIndex }) {
-        this.reorder({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]})
+        this.reorderElements({ oldIndex, newIndex, element: this.getcurrent_form.elements[oldIndex]})
       }
     }
   }

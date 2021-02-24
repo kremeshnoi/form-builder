@@ -5,9 +5,9 @@
     persistent
     max-width="800"
     class="demo-modal"
-    v-model="isVisible">
+    v-model="is_visible">
 
-    <v-card v-if="!showResult">
+    <v-card v-if="!show_result">
       <v-toolbar dark color="primary" class="demo-modal__header">
         <v-btn icon dark @click="cancel()">
           <v-icon> mdi-close </v-icon>
@@ -18,12 +18,12 @@
 
       <!--MODAL FORM CONTENT-->
       <div class="form-content">
-        <h2> {{ currentForm.title }} </h2>
+        <h2> {{ current_form.title }} </h2>
 
         <v-form class="form-content__elements">
           <keep-alive
             :key="itemIndex"
-            v-for="(item, itemIndex) in currentForm.elements">
+            v-for="(item, itemIndex) in current_form.elements">
 
             <component
               :element="item"
@@ -39,11 +39,11 @@
     </v-card>
 
     <!--PREVIEW-->
-    <v-card class="preview" v-if="showResult">
-      <h2 class="preview__title"> {{ currentForm.title }} </h2>
+    <v-card class="preview" v-if="show_result">
+      <h2 class="preview__title"> {{ current_form.title }} </h2>
 
       <section class="preview__content">
-        <div v-for="(item, itemIndex) in currentForm.elements" :key="itemIndex">
+        <div v-for="(item, itemIndex) in current_form.elements" :key="itemIndex">
         <p class="preview__item"> {{ item.label }} : {{ item.value }} </p>
         </div>
       </section>
@@ -83,34 +83,34 @@
     },
     data() {
       return {
-        currentForm: {},
-        isVisible: false,
-        showResult: false
+        current_form: {},
+        is_visible: false,
+        show_result: false
       }
     },
     computed: {
       ...mapState({
-        form: (state) => state.formsModule.demoForm
+        form: (state) => state.formsModule.demo_form
       }),
       ...mapMutations({
-        clear: "CLEAR_DEMO_FORM"
+        clearDemoForm: "CLEAR_DEMO_FORM"
       })
     },
     watch: {
       form(value){
-        this.isVisible = !!value
-        this.currentForm = (value || {})
+        this.is_visible = !!value
+        this.current_form = (value || {})
       }
     },
     methods: {
       cancel() {
-        this.clear
+        this.clearDemoForm
       },
       submit() {
-        this.showResult = true
+        this.show_result = true
       },
       back() {
-        this.showResult = false
+        this.show_result = false
       }
     }
   }
