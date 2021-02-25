@@ -9,4 +9,4 @@ Web application to generate forms for different cases
 
 `npm run build` - compiles and minifies for production
 
-`npm run serve` - compiles and hot-reloads for development
+`npm run start` - compiles and hot-reloads for development
