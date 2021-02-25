@@ -1,6 +1,5 @@
 <template>
 
-  <!--  ATTACHMENT-->
   <v-file-input
     outlined
     show-size

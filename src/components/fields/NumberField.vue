@@ -1,6 +1,5 @@
 <template>
 
-  <!-- NUMBER FIELD-->
   <v-text-field
     ma-0
     outlined

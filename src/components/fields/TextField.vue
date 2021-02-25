@@ -1,6 +1,5 @@
 <template>
 
-  <!--TEXT FIELD-->
   <v-text-field
     ma-0
     counter

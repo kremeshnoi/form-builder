@@ -1,6 +1,5 @@
 <template>
 
-  <!--  SHORT TEXT FIELD-->
   <v-text-field
     ma-0
     counter
@@ -36,7 +35,6 @@
 
 <style lang="sass" scoped>
 
-  // SHORT TEXT FIELD
   .short-text-field
     max-width: 400px
 

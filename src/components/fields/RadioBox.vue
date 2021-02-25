@@ -1,6 +1,5 @@
 <template>
 
-  <!--RADIO BOX-->
   <div class="radio-box">
     <p class="radio-box__label"> {{ element.label }} </p>
     <v-radio-group row hide-details>
@@ -44,7 +43,6 @@
 
 <style lang="sass" scoped>
 
-  // RADIO BOX
   .radio-box
     &__label
       font-size: 16px

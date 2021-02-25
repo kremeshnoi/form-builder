@@ -1,13 +1,11 @@
 <template>
 
-  <!--FORM AREA-->
   <v-card
     elevation="3"
     class="form-area"
     v-if="getCurrentForm">
     <h2> Edit: {{ getCurrentForm.title }} </h2>
 
-    <!--DRAGGABLE AREA-->
     <draggable
       @add="onAdd"
       @end="onDragEnd"
@@ -34,7 +32,6 @@
             <p class="draggable-area__item-description"> Label: {{ item.label }} </p>
           </div>
 
-          <!--ACTION BUTTONS-->
           <div class="action-buttons">
             <v-btn
               text
@@ -54,7 +51,6 @@
       </v-list-item>
     </draggable>
 
-    <!--FORM AREA SAVE BUTTON-->
     <v-btn
       text
       @click="onSave()">
@@ -117,7 +113,6 @@
 
 <style lang="sass" scoped>
 
-  // FORM AREA
   .form-area
     width: 100%
     padding: 40px
@@ -130,7 +125,6 @@
     &__save-button-icon
       margin: 0 10px 0 0
 
-  // DRAGGABLE AREA
   .draggable-area
     flex: 1
     width: 100%
@@ -159,7 +153,6 @@
     &__item-description
       margin: 0 0 10px 0
 
-  // ACTION BUTTONS
   .action-buttons
     flex: 1 !important
     margin: 20px 0 0 0

@@ -1,6 +1,5 @@
 <template>
 
-  <!--SELECT BOX-->
   <div v-if="element && element.items">
     <v-select
       ma-0

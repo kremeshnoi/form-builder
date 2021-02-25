@@ -1,6 +1,5 @@
 <template>
 
-  <!--FORM EDIT-->
   <v-dialog v-model="isVisible" persistent max-width="600px">
     <v-card>
       <v-toolbar dark color="primary">
@@ -13,7 +12,6 @@
         <v-spacer></v-spacer>
       </v-toolbar>
 
-      <!--EDIT CONTENT-->
       <div class="edit-content">
         <div class="edit-content__info">
           <p class="edit-content__info-description">Type: {{ item.type }}
@@ -104,7 +102,6 @@
 
 <style lang="sass" scoped>
 
-  // EDIT CONTENT
   .edit-content
     padding: 20px 20px 40px 20px
     &__info

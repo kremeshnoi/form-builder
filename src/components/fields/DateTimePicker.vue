@@ -1,6 +1,5 @@
 <template>
 
-	<!--DATE-TIME PICKER)-->
 	<v-datetime-picker
 		:label="element.label"
 		v-model="datetime"

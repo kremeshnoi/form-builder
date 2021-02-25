@@ -1,12 +1,10 @@
 <template>
 
-  <!--DASHBOARD-->
   <v-app class="dashboard">
     <v-main>
       <v-container fluid>
         <h1> Dashboard </h1>
 
-        <!--CREATE PANEL-->
         <v-form class="create-panel" @submit.prevent="onAdd()">
           <v-text-field
             filled
@@ -24,7 +22,6 @@
           </v-btn>
         </v-form>
 
-        <!--DASHBOARD LIST-->
         <section class="dashboard-list">
           <v-card elevation="3" outlined>
             <v-list>
@@ -37,7 +34,6 @@
                 v-if="getForms.length === 0"> Nothing there...
               </v-subheader>
 
-              <!--DRAGGABLE AREA-->
               <section class="draggable-area">
                 <v-list-item
                   :key="itemIndex"
@@ -51,7 +47,6 @@
                     </v-list-item-title>
                   </v-list-item-content>
 
-                  <!--ACTION BUTTONS-->
                   <span class="action-buttons">
                     <v-btn class="action-buttons__item" text>
                       <router-link class="action-buttons__item-link" :to="'/forms/'+ item.uid">
@@ -80,7 +75,6 @@
       </v-container>
     </v-main>
 
-    <!--DEMO MODAL-->
     <DemoModal/>
   </v-app>
 
@@ -132,11 +126,9 @@
 
 <style lang="sass" scoped>
 
-  // DASHBOARD
   .dashboard
     padding: 40px 40px 40px 40px
 
-  // CREATE PANEL
   .create-panel
     display: flex
     margin: 40px 0
@@ -146,19 +138,16 @@
     &__input
       margin: 0 20px 0 0
 
-  // DASHBOARD LIST
   .dashboard-list
     display: grid
     grid-gap: 20px
     grid-template-columns: 1fr
     justify-content: flex-start
 
-  // DRAGGABLE AREA
   .draggable-area
     &__item
       padding: 20px 0 20px 20px
 
-  // ACTION BUTTONS
   .action-buttons
     &__item
       color: inherit

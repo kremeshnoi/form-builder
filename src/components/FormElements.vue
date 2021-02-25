@@ -1,10 +1,8 @@
 <template>
 
-  <!--FORM ELEMENTS-->
   <section class="form-elements">
     <h2 class="form-elements__title"> Elements </h2>
 
-    <!--DRAGGABLE AREA-->
     <draggable
       :sort="false"
       @start="drag=true"
@@ -48,12 +46,10 @@
 
 <style lang="sass" scoped>
 
-  // FORM ELEMENTS
   .form-elements
     &__title
       margin: 0 0 20px 0
 
-  // DRAGGABLE AREA
   .draggable-area
     &__item
       margin: 0 0 14px 0

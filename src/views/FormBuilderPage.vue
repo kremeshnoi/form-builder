@@ -1,6 +1,5 @@
 <template>
 
-  <!--FORM BUILDER-->
   <v-app class="form-builder">
     <v-main>
       <v-container class="form-builder__container">
@@ -12,7 +11,6 @@
           <v-icon> mdi-chevron-left </v-icon>
         </v-btn>
 
-        <!--NAVIGATION-->
         <v-system-bar class="navigation" app>
           <router-link class="navigation__link" to="/">
             <v-icon> mdi-home </v-icon>
@@ -25,7 +23,6 @@
           <span v-if="formUid"> ID: {{ formUid }} </span>
         </h1>
 
-        <!--FORM BUILDER SIDEBAR-->
         <v-navigation-drawer
           app
           right
@@ -40,7 +37,6 @@
           <FormElements/>
         </v-navigation-drawer>
 
-        <!--FORM BUILDER MAIN AREA-->
         <section class="form-builder__main-area">
           <FormArea/>
           <FormEditModal/>
@@ -91,7 +87,6 @@
 
 <style lang="sass">
 
-  // FORM BUILDER
 .form-builder
   &__main-area
     display: flex
@@ -102,14 +97,12 @@
   &__container
     padding: 20px 20px 20px 20px
 
-  // NAVIGATION
 .navigation
   padding: 0 20px 0 20px
   &__link
     display: flex
     text-decoration: none
 
-  // SIDEBAR
 .sidebar
   &__toggle
     margin: 0 0 10px 0

@@ -1,6 +1,5 @@
 <template>
 
-  <!--LONG TEXT FIELD (TEXTAREA)-->
   <v-textarea
     ma-0
     counter

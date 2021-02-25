@@ -1,6 +1,5 @@
 <template>
 
-  <!--DEMO MODAL-->
   <v-dialog
     persistent
     max-width="800"
@@ -16,7 +15,6 @@
         <v-spacer></v-spacer>
       </v-toolbar>
 
-      <!--MODAL FORM CONTENT-->
       <div class="form-content">
         <h2> {{ currentForm.title }} </h2>
 
@@ -38,7 +36,6 @@
       </div>
     </v-card>
 
-    <!--PREVIEW-->
     <v-card class="preview" v-if="showResult">
       <h2 class="preview__title"> {{ currentForm.title }} </h2>
 
@@ -119,13 +116,11 @@
 
 <style lang="sass" scoped>
 
-  // DEMO MODAL
   .demo-modal
     width: auto !important
     &__header
       margin: 0 0 40px 0
 
-  // FORM CONTENT
   .form-content
     padding: 0 40px 40px 40px
     &__elements
@@ -133,7 +128,6 @@
     &__element
       margin: 40px 0 40px 0
 
-  // PREVIEW
   .preview
     display: flex
     text-align: start
