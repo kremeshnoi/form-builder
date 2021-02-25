@@ -14,23 +14,23 @@ export const formsModule = {
 		DELETE_FORM(state, uid) {
 			state.forms = [ ...state.forms.filter(f => f.uid !== +uid)]
 		},
-		SET_currentForm(state, uid) {
+		SET_CURRENT_FORM(state, uid) {
 			state.currentForm = Object.assign({}, { ...state.forms.find(f => f.uid === +uid)})
 		},
-		SET_currentElement(state, element) {
+		SET_CURRENT_ELEMENT(state, element) {
 			state.currentElement = element
 		},
 		DELETE_ELEMENT_FROM_FORM(state, element) {
 			state.currentForm.elements = [ ...state.currentForm.elements.filter(f => f.uid !== element.uid)]
 		},
-		SAVE_currentForm(state) {
+		SAVE_CURRENT_FORM(state) {
 			const index = state.forms.findIndex(({uid}) => uid === state.currentForm.uid)
 			state.forms[index] = state.currentForm
 		},
-		SET_demoForm(state, index) {
+		SET_DEMO_FORM(state, index) {
 			state.demoForm = Object.assign({}, { ...state.forms[index] })
 		},
-		CLEAR_demoForm(state) {
+		CLEAR_DEMO_FORM(state) {
 			state.demoForm = null
 		},
 		REORDER_ELEMENTS(state, { oldIndex, newIndex, element }) {
@@ -52,7 +52,7 @@ export const formsModule = {
 	},
 	getters: {
 		getForms: (state) => state.forms,
-		getcurrentForm: (state) => state.currentForm,
-		getcurrentElement: (state) => state.currentElement
+		getCurrentForm: (state) => state.currentForm,
+		getCurrentElement: (state) => state.currentElement
 	}
 }
