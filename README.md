@@ -1,4 +1,5 @@
 # Form Builder
+![Vercel](https://vercelbadge.vercel.app/api/kremeshnoi/form-builder?label=vercel)
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=shield)](https://circleci.com/gh/kremeshnoi/form-builder)
 
 Web application to generate forms for different cases
