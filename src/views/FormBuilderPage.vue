@@ -22,7 +22,7 @@
           <span> Form builder </span>
         </v-system-bar>
         <h1> Form Builder
-          <span v-if="form_uid"> ID: {{ form_uid }} </span>
+          <span v-if="formUid"> ID: {{ formUid }} </span>
         </h1>
 
         <!--FORM BUILDER SIDEBAR-->
@@ -67,23 +67,23 @@
     },
     data() {
       return {
-        form_uid: null,
+        formUid: null,
         drawer: null
       }
     },
     computed: {
       ...mapGetters({
-        getcurrent_form: "getcurrent_form",
-        getcurrent_element: "getcurrent_element"
+        getCurrentForm: "getCurrentForm",
+        getCurrentElement: "getCurrentElement"
       })
     },
     methods: {
       ...mapMutations({
-        setcurrent_form: "SET_CURRENT_FORM"
+        setCurrentForm: "SET_CURRENT_FORM"
       })
     },
     created() {
-      this.setcurrent_form(this.$route.params.id)
+      this.setCurrentForm(this.$route.params.id)
     }
   }
 

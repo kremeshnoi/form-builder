@@ -3,9 +3,9 @@ import { FormEntity } from "@/store/forms/models"
 export const formsModule = {
 	state: {
 		forms: [],
-		demo_form: null,
-		current_form: null,
-		current_element: null,
+		demoForm: null,
+		currentForm: null,
+		currentElement: null,
 	},
 	mutations: {
 		CREATE_FORM(state, title) {
@@ -14,31 +14,31 @@ export const formsModule = {
 		DELETE_FORM(state, uid) {
 			state.forms = [ ...state.forms.filter(f => f.uid !== +uid)]
 		},
-		SET_CURRENT_FORM(state, uid) {
-			state.current_form = Object.assign({}, { ...state.forms.find(f => f.uid === +uid)})
+		SET_currentForm(state, uid) {
+			state.currentForm = Object.assign({}, { ...state.forms.find(f => f.uid === +uid)})
 		},
-		SET_CURRENT_ELEMENT(state, element) {
-			state.current_element = element
+		SET_currentElement(state, element) {
+			state.currentElement = element
 		},
 		DELETE_ELEMENT_FROM_FORM(state, element) {
-			state.current_form.elements = [ ...state.current_form.elements.filter(f => f.uid !== element.uid)]
+			state.currentForm.elements = [ ...state.currentForm.elements.filter(f => f.uid !== element.uid)]
 		},
-		SAVE_CURRENT_FORM(state) {
-			const index = state.forms.findIndex(({uid}) => uid === state.current_form.uid)
-			state.forms[index] = state.current_form
+		SAVE_currentForm(state) {
+			const index = state.forms.findIndex(({uid}) => uid === state.currentForm.uid)
+			state.forms[index] = state.currentForm
 		},
-		SET_DEMO_FORM(state, index) {
-			state.demo_form = Object.assign({}, { ...state.forms[index] })
+		SET_demoForm(state, index) {
+			state.demoForm = Object.assign({}, { ...state.forms[index] })
 		},
-		CLEAR_DEMO_FORM(state) {
-			state.demo_form = null
+		CLEAR_demoForm(state) {
+			state.demoForm = null
 		},
 		REORDER_ELEMENTS(state, { oldIndex, newIndex, element }) {
-			state.current_form.elements.splice(oldIndex, 1)
-			state.current_form.elements.splice(newIndex, 0, element)
+			state.currentForm.elements.splice(oldIndex, 1)
+			state.currentForm.elements.splice(newIndex, 0, element)
 		},
 		UPDATE_FORM_ELEMENT(state, element) {
-			const elements = state.current_form.elements
+			const elements = state.currentForm.elements
 			if("index" in element){
 				const ind = element.index
 				delete element.index
@@ -47,12 +47,12 @@ export const formsModule = {
 				const index = elements.findIndex(({ uid }) => uid === element.uid)
 				elements[index] = element
 			}
-			state.current_form = { ...state.current_form, elements }
+			state.currentForm = { ...state.currentForm, elements }
 		}
 	},
 	getters: {
 		getForms: (state) => state.forms,
-		getcurrent_form: (state) => state.current_form,
-		getcurrent_element: (state) => state.current_element
+		getcurrentForm: (state) => state.currentForm,
+		getcurrentElement: (state) => state.currentElement
 	}
 }

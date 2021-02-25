@@ -12,10 +12,10 @@ export const FormEntity = (title) => {
 	}
 }
 
-export const FormElement = (form_id, element) => {
+export const FormElement = (formId, element) => {
 	return {
 		...element,
-		form_id,
+		formId,
 		...Entity()
 	}
 }

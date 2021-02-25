@@ -106,14 +106,14 @@
     computed: {
       ...mapGetters({
         getForms: "getForms",
-        getcurrent_form: "getcurrent_form"
+        getCurrentForm: "getCurrentForm"
       })
     },
     methods: {
       ...mapMutations({
         createForm: "CREATE_FORM",
         deleteForm: "DELETE_FORM",
-        setdemo_form: "SET_DEMO_FORM"
+        setDemoForm: "SET_DEMO_FORM"
       }),
       onAdd() {
         this.createForm(this.title)
@@ -123,7 +123,7 @@
         this.deleteForm(uid)
       },
       onShowDemo(index) {
-        this.setdemo_form(index)
+        this.setDemoForm(index)
       }
     }
   }

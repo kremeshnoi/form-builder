@@ -1,7 +1,7 @@
 <template>
 
   <!--FORM EDIT-->
-  <v-dialog v-model="is_visible" persistent max-width="600px">
+  <v-dialog v-model="isVisible" persistent max-width="600px">
     <v-card>
       <v-toolbar dark color="primary">
 
@@ -64,7 +64,7 @@
     data() {
       return {
         item: {},
-        is_visible: false
+        isVisible: false
       }
     },
     components: {
@@ -72,7 +72,7 @@
     },
     computed: {
       ...mapState({
-        current_element: (state) => state.formsModule.current_element
+        currentElement: (state) => state.formsModule.currentElement
       }),
       isValid(){
         return this.item.label && this.item.name && (!["RadioBox", "SelectBox"]
@@ -80,21 +80,21 @@
       }
     },
     watch: {
-      current_element(value){
-        this.is_visible = !!value
+      currentElement(value){
+        this.isVisible = !!value
         this.item = (value || {})
       }
     },
     methods: {
       ...mapMutations({
         updateElement: "UPDATE_FORM_ELEMENT",
-        setcurrent_element: "SET_CURRENT_ELEMENT"
+        setCurrentElement: "SET_CURRENT_ELEMENT"
       }),
       cancel() {
-        this.setcurrent_element(null)
+        this.setCurrentElement(null)
       },
       save() {
-        this.setcurrent_element(null)
+        this.setCurrentElement(null)
         this.updateElement({...this.item})
       }
     },

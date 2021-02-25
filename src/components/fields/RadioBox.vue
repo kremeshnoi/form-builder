@@ -1,7 +1,7 @@
 <template>
 
   <!--RADIO BOX-->
-  <div class="radio-box_">
+  <div class="radio-box">
     <p class="radio-box__label"> {{ element.label }} </p>
     <v-radio-group row hide-details>
       <v-radio
