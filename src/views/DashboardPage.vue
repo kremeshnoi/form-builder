@@ -31,14 +31,14 @@
               </v-divider>
               <v-subheader
                 inset
-                v-if="getForms.length === 0"> Nothing there...
+                v-if="forms.length === 0"> Nothing there...
               </v-subheader>
 
               <section class="draggable-area">
                 <v-list-item
                   v-bind:key="itemIndex"
                   class="draggable-area__item"
-                  v-for="(item, itemIndex) in getForms">
+                  v-for="(item, itemIndex) in forms">
                   <v-list-item-avatar>
                     <v-icon class="grey lighten-1" dark> mdi-folder </v-icon>
                   </v-list-item-avatar>
@@ -83,7 +83,7 @@
 <script>
 
   import draggable from "vuedraggable"
-  import { mapGetters, mapMutations } from "vuex"
+  import { mapState, mapMutations } from "vuex"
   import DemoModal from "@/components/modals/DemoModal"
 
   export default {
@@ -98,9 +98,8 @@
       }
     },
     computed: {
-      ...mapGetters({
-        getForms: "getForms",
-        getCurrentForm: "getCurrentForm"
+      ...mapState({
+        forms: state => state.formsModule.forms
       })
     },
     methods: {

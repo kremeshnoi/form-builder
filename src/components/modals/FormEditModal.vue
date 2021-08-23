@@ -40,7 +40,6 @@
               v-bind:input-value="selected"
               close-icon="edit-content__chips-item">
               <strong> {{ item }} </strong>
-              &nbsp;
             </v-chip>
           </template>
         </v-combobox>
@@ -55,7 +54,6 @@
 <script>
 
   import { mapMutations, mapState } from "vuex"
-  import TextField from "@/components/fields/TextField"
 
   export default {
     name: "FormEdit",
@@ -64,9 +62,6 @@
         item: {},
         isVisible: false
       }
-    },
-    components: {
-      TextField
     },
     computed: {
       ...mapState({

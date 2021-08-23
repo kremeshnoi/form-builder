@@ -30,14 +30,6 @@ export const ElementEntity = (title, icon) => {
 	}
 }
 
-export const ElementTextField = ({title, icon}) => {
-	return {
-		...ElementEntity(title, icon),
-		type: "TextField",
-		value: ""
-	}
-}
-
 export const ElementShortTextField = ({title, icon}) => {
 	return {
 		...ElementEntity(title, icon),
@@ -96,8 +88,7 @@ export const ElementAttachment = ({title, icon}) => {
 	}
 }
 
-export const DefaultElementsListChose = [
-	ElementTextField({title: "Text field", icon: "mdi-card-text"}),
+export const DefaultElementsList = [
 	ElementShortTextField({title: "Short text field", icon: "mdi-card-text-outline"}),
 	ElementLongTextField({title: "Long text field", icon: "mdi-text-box-outline"}),
 	ElementNumberField({title: "Number field", icon: "mdi-numeric"}),

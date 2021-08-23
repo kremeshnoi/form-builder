@@ -3,24 +3,24 @@
   <v-card
     elevation="3"
     class="form-area"
-    v-if="getCurrentForm">
-    <h2> Edit: {{ getCurrentForm.title }} </h2>
+    v-if="currentForm">
+    <h2> Edit: {{ currentForm.title }} </h2>
 
     <draggable
       v-on:add="onAdd"
       v-on:end="onDragEnd"
       class="draggable-area"
       v-bind:group="{ name: 'form-area-elements', put: true }"
-      v-bind:class="{ active: getCurrentForm.elements.length }">
+      v-bind:class="{ active: currentForm.elements.length }">
       <v-subheader
         class="draggable-area__subheader"
-        v-if="!getCurrentForm.elements.length">
+        v-if="!currentForm.elements.length">
         Drag here
       </v-subheader>
       <v-list-item
         v-bind:key="item.uid"
         class="draggable-area__item"
-        v-for="item in getCurrentForm.elements">
+        v-for="item in currentForm.elements">
 
         <v-list-item-avatar>
           <v-icon class="grey lighten-1" dark> mdi-folder </v-icon>
@@ -63,7 +63,7 @@
 <script>
 
   import draggable from "vuedraggable"
-  import { mapGetters, mapMutations } from "vuex"
+  import { mapState, mapMutations } from "vuex"
 
   export default {
     name: "FormArea",
@@ -71,10 +71,9 @@
       draggable
     },
     computed: {
-      ...mapGetters({
-        getElements: "getElements",
-        getCurrentForm: "getCurrentForm",
-        getCurrentElement: "getCurrentElement"
+      ...mapState({
+        elements: state => state.elementsModule.elements,
+        currentForm: state => state.formsModule.currentForm
       })
     },
     methods: {
@@ -96,7 +95,7 @@
         this.setCurrentForm(element)
       },
       onAdd(event) {
-        const type = this.getElements[event.oldIndex].type
+        const type = this.elements[event.oldIndex].type
         this.setCurrentForm({
           type,
           index: event.newIndex,
@@ -104,7 +103,7 @@
         })
       },
       onDragEnd({ newIndex, oldIndex }) {
-        this.reorderElements({ oldIndex, newIndex, element: this.getCurrentForm.elements[oldIndex]})
+        this.reorderElements({ oldIndex, newIndex, element: this.currentForm.elements[oldIndex]})
       }
     }
   }

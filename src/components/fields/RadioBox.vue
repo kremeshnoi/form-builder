@@ -1,5 +1,7 @@
 <template>
 
+  <!-- FIXME: Attachment info value is not displayed in the input after the component is rendered -->
+
   <div class="radio-box">
     <p class="radio-box__label"> {{ element.label }} </p>
     <v-radio-group row hide-details>

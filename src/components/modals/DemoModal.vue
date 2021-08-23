@@ -41,7 +41,10 @@
 
       <section class="preview__content">
         <div v-for="(item, itemIndex) in currentForm.elements" v-bind:key="itemIndex">
-        <p class="preview__item"> {{ item.label }} : {{ item.value }} </p>
+          <p class="preview__item" v-if="item.value && item.value.url" >
+            <img class="preview__image" v-bind:src="item.value.url" alt="image">
+          </p>
+          <p v-else class="preview__item"> <strong>{{ item.label }}</strong> : {{ item.value }} </p>
         </div>
       </section>
 
@@ -58,7 +61,6 @@
 
   import { mapMutations, mapState } from "vuex"
   import RadioBox from "@/components/fields/RadioBox"
-  import TextField from "@/components/fields/TextField"
   import SelectBox from "@/components/fields/SelectBox"
   import Attachment from "@/components/fields/Attachment"
   import NumberField from "@/components/fields/NumberField"
@@ -70,7 +72,6 @@
     name: "DemoModal",
     components: {
       RadioBox,
-      TextField,
       SelectBox,
       Attachment,
       NumberField,
@@ -138,12 +139,17 @@
     &__content
       width: 100%
     &__title
+      width: 100%
       font-size: 32px
       margin: 0 0 20px 0
     &__item
       font-size: 22px
       font-weight: 300
+    &__image
+      width: 100%
+      max-width: 240px
     &__button
-      smargin: 20px 0 0 0
+      width: 100%
+      margin: 20px 0 0 0
 
 </style>

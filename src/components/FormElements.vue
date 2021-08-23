@@ -7,14 +7,14 @@
       v-bind:sort="false"
       v-on:start="drag=true"
       v-on:end="drag=false"
-      v-model="getElements"
+      v-model="elements"
       class="draggable-area"
       v-bind:group="{ name: 'form-elements', pull: 'clone', put: false }">
       <v-btn
         v-bind:key="itemIndex"
         v-ripple="false"
         class="draggable-area__item"
-        v-for="(item, itemIndex) in getElements">
+        v-for="(item, itemIndex) in elements">
         <v-icon class="draggable-area__item-icon"> {{ item.icon }} </v-icon>
         {{ item.title }}
       </v-btn>
@@ -25,7 +25,7 @@
 <script>
 
   import draggable from "vuedraggable"
-  import { mapGetters, mapMutations } from "vuex"
+  import { mapState, mapMutations } from "vuex"
 
   export default {
     name: "FormElements",
@@ -33,7 +33,9 @@
       draggable
     },
     computed: {
-      ...mapGetters(["getElements"])
+      ...mapState({
+        elements: state => state.elementsModule.elements
+      })
     },
     methods: {
       ...mapMutations({

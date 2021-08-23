@@ -32,7 +32,7 @@
             text
             class="sidebar__toggle"
             v-on:click.stop="drawer = !drawer">
-            <v-icon> mdi-chevron-right</v-icon>
+            <v-icon> mdi-chevron-right </v-icon>
           </v-btn>
           <FormElements/>
         </v-navigation-drawer>
@@ -50,7 +50,7 @@
 <script>
 
   import FormArea from "@/components/FormArea"
-  import { mapMutations, mapGetters } from "vuex"
+  import { mapMutations, mapState } from "vuex"
   import FormElements from "@/components/FormElements"
   import FormEditModal from "@/components/modals/FormEditModal"
 
@@ -68,9 +68,9 @@
       }
     },
     computed: {
-      ...mapGetters({
-        getCurrentForm: "getCurrentForm",
-        getCurrentElement: "getCurrentElement"
+      ...mapState({
+        currentForm: state => state.formsModule.currentForm,
+        currentElement: state => state.elementsModule.currentElement
       })
     },
     methods: {

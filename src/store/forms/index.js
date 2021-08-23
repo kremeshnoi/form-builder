@@ -5,7 +5,7 @@ export const formsModule = {
 		forms: [],
 		demoForm: null,
 		currentForm: null,
-		currentElement: null,
+		currentElement: null
 	},
 	mutations: {
 		CREATE_FORM(state, title) {
@@ -49,10 +49,5 @@ export const formsModule = {
 			}
 			state.currentForm = { ...state.currentForm, elements }
 		}
-	},
-	getters: {
-		getForms: (state) => state.forms,
-		getCurrentForm: (state) => state.currentForm,
-		getCurrentElement: (state) => state.currentElement
 	}
 }
