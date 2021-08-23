@@ -1,9 +1,9 @@
 <template>
 
 	<v-datetime-picker
-		:label="element.label"
 		v-model="datetime"
-		@input="handler">
+		v-on:input="handler"
+    v-bind:label="element.label">
 		<template slot="dateIcon">
 			<v-icon> mdi-calendar </v-icon>
 		</template>

@@ -4,11 +4,11 @@
     ma-0
     counter
     outlined
-    :value="value"
     maxlength="25"
-    @change="handler"
-    :name="element.name"
-    :label="element.label"
+    v-bind:value="value"
+    v-on:change="handler"
+    v-bind:name="element.name"
+    v-bind:label="element.label"
     class="short-text-field">
   </v-text-field>
 

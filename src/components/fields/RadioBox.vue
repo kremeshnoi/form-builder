@@ -4,11 +4,11 @@
     <p class="radio-box__label"> {{ element.label }} </p>
     <v-radio-group row hide-details>
       <v-radio
-        :key="value"
-        :label="value"
-        :value="value"
-        :name="element.name"
-        @change="handler(value)"
+        v-bind:key="value"
+        v-bind:label="value"
+        v-bind:value="value"
+        v-bind:name="element.name"
+        v-on:change="handler(value)"
         v-for="(value) in element.items">
       </v-radio>
       <v-radio

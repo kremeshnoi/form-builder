@@ -6,7 +6,7 @@
         <v-btn
           text
           v-if="!drawer"
-          @click.stop="drawer = !drawer"
+          v-on:click.stop="drawer = !drawer"
           class="sidebar__toggle sidebar__toggle_left">
           <v-icon> mdi-chevron-left </v-icon>
         </v-btn>
@@ -31,7 +31,7 @@
           <v-btn
             text
             class="sidebar__toggle"
-            @click.stop="drawer = !drawer">
+            v-on:click.stop="drawer = !drawer">
             <v-icon> mdi-chevron-right</v-icon>
           </v-btn>
           <FormElements/>

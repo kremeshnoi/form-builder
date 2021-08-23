@@ -5,10 +5,10 @@
     outlined
     hide-details
     type="number"
-    :value="value"
-    @change="handler"
-    :name="element.name"
-    :label="element.label">
+    v-bind:value="value"
+    v-on:change="handler"
+    v-bind:name="element.name"
+    v-bind:label="element.label">
   </v-text-field>
 
 </template>

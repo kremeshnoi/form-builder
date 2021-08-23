@@ -4,6 +4,7 @@ import "./registerServiceWorker"
 import router from "./router"
 import store from "./store"
 import vuetify from "./plugins/vuetify"
+import "@/assets/styles/scrollbar.sass"
 import DatetimePicker from "vuetify-datetime-picker"
 
 Vue.use(DatetimePicker)

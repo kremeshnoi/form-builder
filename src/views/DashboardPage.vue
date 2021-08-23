@@ -5,7 +5,7 @@
       <v-container fluid>
         <h1> Dashboard </h1>
 
-        <v-form class="create-panel" @submit.prevent="onAdd()">
+        <v-form class="create-panel" v-on:submit.prevent="onAdd()">
           <v-text-field
             filled
             hide-details
@@ -18,7 +18,7 @@
             depressed
             type="submit"
             color="primary"
-            :disabled="title.length === 0"> Create
+            v-bind:disabled="title.length === 0"> Create
           </v-btn>
         </v-form>
 
@@ -36,7 +36,7 @@
 
               <section class="draggable-area">
                 <v-list-item
-                  :key="itemIndex"
+                  v-bind:key="itemIndex"
                   class="draggable-area__item"
                   v-for="(item, itemIndex) in getForms">
                   <v-list-item-avatar>
@@ -49,12 +49,12 @@
 
                   <span class="action-buttons">
                     <v-btn class="action-buttons__item" text>
-                      <router-link class="action-buttons__item-link" :to="'/forms/'+ item.uid">
+                      <router-link class="action-buttons__item-link" v-bind:to="'/forms/'+ item.uid">
                         <v-icon class="action-buttons__item-icon"> mdi-pencil </v-icon>
                         Edit
                       </router-link>
                     </v-btn>
-                    <v-btn class="action-buttons__item" @click="onDelete(item.uid)" text>
+                    <v-btn class="action-buttons__item" v-on:click="onDelete(item.uid)" text>
                       <v-icon class="action-buttons__item-icon"> mdi-delete </v-icon>
                       Delete
                     </v-btn>
@@ -62,7 +62,7 @@
                       text
                       v-if="item.elements.length"
                       class="action-buttons__item"
-                      @click="onShowDemo(itemIndex)">
+                      v-on:click="onShowDemo(itemIndex)">
                       <v-icon class="action-buttons__item-icon"> mdi-eye </v-icon>
                       Demo
                     </v-btn>

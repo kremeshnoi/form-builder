@@ -8,7 +8,7 @@
 
     <v-card v-if="!showResult">
       <v-toolbar dark color="primary" class="demo-modal__header">
-        <v-btn icon dark @click="cancel()">
+        <v-btn icon dark v-on:click="cancel()">
           <v-icon> mdi-close </v-icon>
         </v-btn>
         <v-toolbar-title> Demo </v-toolbar-title>
@@ -20,11 +20,11 @@
 
         <v-form class="form-content__elements">
           <keep-alive
-            :key="itemIndex"
+            v-bind:key="itemIndex"
             v-for="(item, itemIndex) in currentForm.elements">
 
             <component
-              :element="item"
+              v-bind:element="item"
               v-model="item.value"
               v-bind:is="item.type"
               class="form-content__element">
@@ -32,7 +32,7 @@
           </keep-alive>
         </v-form>
 
-        <v-btn @click="submit()"> Submit </v-btn>
+        <v-btn v-on:click="submit()"> Submit </v-btn>
       </div>
     </v-card>
 
@@ -40,14 +40,14 @@
       <h2 class="preview__title"> {{ currentForm.title }} </h2>
 
       <section class="preview__content">
-        <div v-for="(item, itemIndex) in currentForm.elements" :key="itemIndex">
+        <div v-for="(item, itemIndex) in currentForm.elements" v-bind:key="itemIndex">
         <p class="preview__item"> {{ item.label }} : {{ item.value }} </p>
         </div>
       </section>
 
       <v-btn
         class="preview__button"
-        @click="back()"> Back to edit
+        v-on:click="back()"> Back to edit
       </v-btn>
     </v-card>
   </v-dialog>

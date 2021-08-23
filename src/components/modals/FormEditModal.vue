@@ -4,7 +4,7 @@
     <v-card>
       <v-toolbar dark color="primary">
 
-        <v-btn class="form-edit__button" icon dark @click="cancel()">
+        <v-btn class="form-edit__button" icon dark v-on:click="cancel()">
           <v-icon> mdi-close </v-icon>
         </v-btn>
 
@@ -36,8 +36,8 @@
             <v-chip
               close
               v-bind="attrs"
-              @click="select"
-              :input-value="selected"
+              v-on:click="select"
+              v-bind:input-value="selected"
               close-icon="edit-content__chips-item">
               <strong> {{ item }} </strong>
               &nbsp;
@@ -45,7 +45,7 @@
           </template>
         </v-combobox>
 
-        <v-btn :disabled="!isValid" @click="save()"> Save </v-btn>
+        <v-btn v-bind:disabled="!isValid" v-on:click="save()"> Save </v-btn>
       </div>
     </v-card>
   </v-dialog>

@@ -4,14 +4,14 @@
     <h2 class="form-elements__title"> Elements </h2>
 
     <draggable
-      :sort="false"
-      @start="drag=true"
-      @end="drag=false"
+      v-bind:sort="false"
+      v-on:start="drag=true"
+      v-on:end="drag=false"
       v-model="getElements"
       class="draggable-area"
-      :group="{ name: 'form-elements', pull: 'clone', put: false }">
+      v-bind:group="{ name: 'form-elements', pull: 'clone', put: false }">
       <v-btn
-        :key="itemIndex"
+        v-bind:key="itemIndex"
         v-ripple="false"
         class="draggable-area__item"
         v-for="(item, itemIndex) in getElements">

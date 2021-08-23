@@ -7,18 +7,18 @@
     <h2> Edit: {{ getCurrentForm.title }} </h2>
 
     <draggable
-      @add="onAdd"
-      @end="onDragEnd"
+      v-on:add="onAdd"
+      v-on:end="onDragEnd"
       class="draggable-area"
-      :group="{ name: 'form-area-elements', put: true }"
-      :class="{ active: getCurrentForm.elements.length }">
+      v-bind:group="{ name: 'form-area-elements', put: true }"
+      v-bind:class="{ active: getCurrentForm.elements.length }">
       <v-subheader
         class="draggable-area__subheader"
         v-if="!getCurrentForm.elements.length">
         Drag here
       </v-subheader>
       <v-list-item
-        :key="item.uid"
+        v-bind:key="item.uid"
         class="draggable-area__item"
         v-for="item in getCurrentForm.elements">
 
@@ -35,14 +35,14 @@
           <div class="action-buttons">
             <v-btn
               text
-              @click="onDelete(item)">
+              v-on:click="onDelete(item)">
               <v-icon class="action-buttons__icon"> mdi-delete </v-icon>
               Delete
             </v-btn>
 
             <v-btn
               text
-              @click="onEdit(item)">
+              v-on:click="onEdit(item)">
               <v-icon class="action-buttons__icon"> mdi-pencil </v-icon>
               Edit
             </v-btn>
@@ -53,7 +53,7 @@
 
     <v-btn
       text
-      @click="onSave()">
+      v-on:click="onSave()">
       <v-icon class="form-area__save-button-icon"> mdi-content-save </v-icon> Save
     </v-btn>
   </v-card>
