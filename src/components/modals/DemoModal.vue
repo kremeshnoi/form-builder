@@ -6,7 +6,7 @@
     class="demo-modal"
     v-model="isVisible">
 
-    <v-card v-if="!showResult">
+    <v-card v-if="!showResult" rounded="0">
       <v-toolbar dark color="primary" class="demo-modal__header">
         <v-btn icon dark v-on:click="cancel()">
           <v-icon> mdi-close </v-icon>
@@ -120,6 +120,7 @@
     width: auto !important
     &__header
       margin: 0 0 40px 0
+      border-top-right-radius: 0 !important
 
   .form-content
     padding: 0 40px 40px 40px
